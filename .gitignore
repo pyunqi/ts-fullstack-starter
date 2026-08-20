@@ -6,7 +6,8 @@ dist/
 # netlify dev 启动时为 Edge Functions 生成的，本项目不用 Edge Functions
 deno.lock
 
-# 本地 SQLite 数据库文件
+# 本地 SQLite 数据库文件。注意只忽略文件，不忽略 data/ 目录本身 ——
+# 目录不在的话，新克隆下来第一条 db:migrate 就会失败（见 data/.gitkeep）
 data/*.db
 data/*.db-journal
 data/*.db-wal

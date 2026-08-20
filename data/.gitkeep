@@ -1,0 +1,6 @@
+本地 SQLite 数据库就落在这个目录里（.env 默认 DATABASE_URL=file:./data/dev.db）。
+
+目录本身必须进 git，只是里面的 *.db 被忽略 —— SQLite 不会替你建目录，
+新克隆下来如果没有 data/，第一条 pnpm db:migrate 就会失败：
+  ConnectionFailed("Unable to open connection to local database .../data/dev.db: 14")
+而那个错误码 14 看不出根因是「目录不存在」。
