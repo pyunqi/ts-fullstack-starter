@@ -42,6 +42,11 @@ pnpm dev                      # http://localhost:8888
 
 ## 用它开新项目
 
+**用 Claude Code 开的话，先看 [docs/new-project.md](docs/new-project.md)** ——
+那份讲的是人和模型分别该做什么，以及为什么第一件事是改 `CLAUDE.md` 而不是写代码。
+
+手工上手的话，六步：
+
 1. 改名：根 `package.json` 的 `name`、`apps/web/index.html` 的 `<title>`、
    `apps/web/public/brand/` 里的三个占位 SVG、i18n 里的 `brand`。
    包名 `@app/*` 可以留着 —— 它不出现在任何对外的地方。
@@ -66,6 +71,7 @@ netlify/functions/   薄适配层，把请求转交给 packages/api
 cloudflare/          同上，另一个平台
 scripts/             五个构建期守卫
 docs/patterns/       没有默认装配、但需要时可以照着加的东西
+.claude/             项目共享的 Claude Code 配置（只放只读和幂等命令的允许清单）
 ```
 
 ## 五个守卫
