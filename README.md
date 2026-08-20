@@ -70,6 +70,7 @@ packages/shared/     前后端共用的 zod 校验和类型
 netlify/functions/   薄适配层，把请求转交给 packages/api
 cloudflare/          同上，另一个平台
 scripts/             五个构建期守卫
+docs/new-project.md  用 Claude Code 从这个骨架开新项目该怎么做
 docs/patterns/       没有默认装配、但需要时可以照着加的东西
 .claude/             项目共享的 Claude Code 配置（只放只读和幂等命令的允许清单）
 ```
