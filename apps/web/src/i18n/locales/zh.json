@@ -1,0 +1,214 @@
+{
+  "brand": "Starter",
+
+  "nav": {
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录",
+    "me": "我的",
+    "language": "EN",
+    "accounts": "账号",
+    "settings": "站点设置",
+    "archive": "归档区",
+    "audit": "操作日志",
+    "password": "修改密码"
+  },
+
+  "common": {
+    "loading": "加载中…",
+    "submitting": "提交中…",
+    "save": "保存",
+    "saved": "已保存",
+    "delete": "删除",
+    "loadMore": "加载更多",
+    "expandAll": "展开全部",
+    "collapse": "收起",
+    "moveEarlier": "上移",
+    "moveLater": "下移",
+    "prevPage": "上一页",
+    "nextPage": "下一页",
+    "pageRange": "第 {{from}}–{{to}} 条，共 {{total}} 条"
+  },
+
+  "theme": {
+    "label": "配色",
+    "system": "跟随系统",
+    "light": "亮色",
+    "dark": "暗色"
+  },
+
+  "home": {
+    "title": "这是一个空的起点",
+    "text": "登录、账号体系、归档、审计、限流、双语和暗色都已经就位。把这段文案改掉，然后开始加你自己的东西。",
+    "nextTitle": "接下来做什么",
+    "next1": "在 packages/db/src/schema.ts 里加你的表 —— 加 archived_at 的话记得接进归档区",
+    "next2": "在 packages/shared/src/schemas.ts 里定义枚举和校验，前后端共用同一份",
+    "next3": "跑 pnpm check，七秒钟告诉你有没有漏接",
+    "adminEntry": "进入后台 →"
+  },
+
+  "login": {
+    "title": "登录",
+    "identifier": "邮箱或用户名",
+    "password": "密码",
+    "submit": "登录",
+    "noAccount": "还没有账号？"
+  },
+
+  "register": {
+    "title": "注册",
+    "email": "邮箱",
+    "username": "用户名",
+    "password": "密码",
+    "name": "姓名",
+    "phoneOptional": "手机号（选填）",
+    "submit": "注册",
+    "hasAccount": "已经有账号了？"
+  },
+
+  "me": {
+    "title": "我的",
+    "profile": "个人资料",
+    "password": "修改密码",
+    "passwordHint": "改完密码，其他设备上的登录会立刻失效。",
+    "passwordDone": "密码已修改，其他设备已退出登录。",
+    "currentPassword": "当前密码",
+    "newPassword": "新密码",
+    "changePassword": "修改密码"
+  },
+
+  "adminLogin": {
+    "title": "后台登录",
+    "username": "用户名"
+  },
+
+  "accounts": {
+    "displayName": "显示名",
+    "role": "角色",
+    "create": "新建账号",
+    "active": "正常",
+    "disabled": "已停用",
+    "enable": "启用",
+    "disable": "停用",
+    "createdAt": "创建于 {{date}}",
+    "lastLogin": "最近登录 {{date}}",
+    "neverLoggedIn": "从未登录",
+    "confirmArchive": "把「{{name}}」移入归档区？归档后立刻登不进来，但随时可以恢复。",
+    "archiveHint": "停用和删除是两件事：停用的账号还在这个列表里，删除的会移进归档区。"
+  },
+
+  "admin": {
+    "role": {
+      "admin": "管理员",
+      "staff": "员工"
+    },
+    "auditGroup": {
+      "all": "全部",
+      "auth": "登录",
+      "account": "账号",
+      "user": "用户",
+      "image": "图片",
+      "settings": "设置",
+      "archive": "归档"
+    }
+  },
+
+  "archive": {
+    "intro": "各处的「删除」都只是移到这里，数据仍在库里。彻底删除不可撤销，只在这一页进行。",
+    "empty": "归档区是空的。",
+    "archivedAt": "删除于 {{date}}",
+    "restore": "恢复",
+    "purge": "彻底删除",
+    "confirmPurge": "彻底删除「{{name}}」？这一步不可撤销。",
+    "type": {
+      "account": "后台账号",
+      "user": "用户"
+    }
+  },
+
+  "settings": {
+    "siteName": "站点名称",
+    "siteNameEn": "站点名称（英文）",
+    "heroTitle": "首页标题",
+    "heroTitleEn": "首页标题（英文）",
+    "heroText": "首页副标题",
+    "heroTextEn": "首页副标题（英文）",
+    "emailFromName": "发件人显示名",
+    "emailReplyTo": "回复地址",
+    "enHint": "英文项留空时，前台会自动回落到中文，不必每项都录两遍。",
+    "testEmail": "发测试邮件",
+    "testEmailHint": "配好域名和 API key 之后先发一封给自己。收不到多半是域名 DNS 还没验证通过，而那种情况下真实用户也一样收不到。",
+    "sendTest": "发送",
+    "testSent": "已发送，去收件箱看看。"
+  },
+
+  "image": {
+    "choose": "选择图片",
+    "uploading": "上传中…",
+    "count": "已选 {{count}} 张",
+    "addUrl": "添加图片地址",
+    "unsupported": "只支持 JPEG、PNG、WebP 格式"
+  },
+
+  "error": {
+    "network": "连不上服务器。请检查网络后重试。",
+    "notFound": "没有这个页面。",
+    "unexpected": "出现了没预料到的问题。",
+    "unexpectedWith": "出现了没预料到的问题：{{detail}}",
+    "unknownCode": "操作没有成功（{{code}}，HTTP {{status}}）。把这行截图发给我们就能定位。",
+    "invalidFields": "以下内容需要修改：{{fields}}",
+    "listSeparator": "、",
+
+    "field": {
+      "required": "此项必填",
+      "email": "邮箱格式不正确",
+      "datetime": "时间格式不正确",
+      "format": "格式不正确",
+      "oneOf": "不是可选的取值之一",
+      "unexpected": "包含了不认识的字段",
+      "tooShort": "至少 {{min}} 个字",
+      "tooLong": "最多 {{max}} 个字",
+      "tooSmall": "不能小于 {{min}}",
+      "tooBig": "不能大于 {{max}}"
+    },
+
+    "fieldName": {
+      "email": "邮箱",
+      "username": "用户名",
+      "password": "密码",
+      "name": "姓名",
+      "phone": "手机号",
+      "displayName": "显示名",
+      "role": "角色",
+      "identifier": "邮箱或用户名",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "to": "收件地址"
+    },
+
+    "code": {
+      "invalid_input": "填写的内容有问题，请检查后重试。",
+      "invalid_query": "查询条件不正确。",
+      "unauthorized": "请先登录。",
+      "forbidden": "当前账号没有这个权限。",
+      "not_found": "找不到这条数据，可能已经被删除。",
+      "internal_error": "服务端出错了。把这个页面截图发给我们，日志里能查到。",
+      "invalid_credentials": "用户名或密码不正确。",
+      "invalid_password": "当前密码不正确。",
+      "account_disabled": "这个账号已被停用，请联系管理员。",
+      "too_many_attempts": "尝试次数太多，请过一会儿再试。",
+      "too_many_requests": "操作太频繁，请 {{minutes}} 分钟后再试。",
+      "email_taken": "这个邮箱已经注册过了。",
+      "username_taken": "这个用户名已经被占用了。",
+      "username_taken_archived": "这个用户名属于一个已删除的账号。去归档区恢复它，或者换一个用户名。",
+      "cannot_disable_self": "不能停用或删除自己的账号 —— 那会把你自己锁在后台外面。",
+      "cannot_demote_self": "不能把自己降级 —— 那会把你自己锁在后台外面。",
+      "account_has_uploads": "这个账号传过 {{count}} 张图片，删掉它会断掉图片的来源记录。",
+      "unsupported_image_type": "只支持 JPEG、PNG、WebP 格式。",
+      "image_too_large": "图片太大了，请压缩后再上传。",
+      "empty_body": "没有收到内容。",
+      "email_not_configured": "还没配邮件服务（RESEND_API_KEY 和 EMAIL_FROM），发不了信。",
+      "email_send_failed": "邮件没发出去。多半是发件域名还没验证通过。"
+    }
+  }
+}

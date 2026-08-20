@@ -1,0 +1,73 @@
+{
+  // Cloudflare Workers 部署配置，对应 netlify.toml。
+  //
+  // ⚠️ 这个文件在 git 里，**任何密钥都不能写进来** ——
+  // DATABASE_AUTH_TOKEN / JWT_SECRET / RESEND_API_KEY 一律用
+  // `wrangler secret put` 注入。下面 vars 里只放非敏感的值。
+  //
+  // ⚠️ 免费版跑不起来。登录和注册要算 bcrypt（实测 hash 57ms / compare 48ms），
+  // 而免费版每请求只有 10ms CPU，超了会被掐断并返回 Error 1102。
+  // **必须用付费版**（默认 30s CPU）。详见 README.md。
+
+  "name": "app",
+  "main": "worker.ts",
+
+  "compatibility_date": "2026-08-09",
+
+  // packages/db 的 libsql 客户端、bcryptjs、jose 都依赖 Node 内置模块。
+  // 另外 process.env 也是靠它才在模块顶层可用 —— 见 worker.ts 的说明。
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    // 路径相对本文件所在目录
+    "directory": "../apps/web/dist",
+
+    // SPA 深链兜底：匹配不到静态文件就返回 index.html。
+    // 等价于 netlify.toml 里那三段 context redirects。
+    "not_found_handling": "single-page-application",
+
+    // 只有 /api/* 交给 Worker，其余路径由静态资源直出，连 Worker 都不唤起。
+    // 等价于 netlify/functions/api.mts 里的 `config.path = "/api/*"`。
+    //
+    // 刻意不用 `run_worker_first: true` —— 那会让每个 JS/CSS/图片请求
+    // 都白白唤起一次 Worker，既慢又多花调用次数。
+    "run_worker_first": ["/api/*"]
+  },
+
+  "r2_buckets": [
+    // 公开图片。可读性**由我们自己的 /api/images/* 路由提供**，
+    // 桶本身保持私有，不要在控制台开 r2.dev 公开访问。
+    {
+      "binding": "PUBLIC_IMAGES",
+      "bucket_name": "app-public-images"
+    },
+    // 私密文件。**绝对不能开公开访问**，只能经过挂了鉴权的路由读取。
+    {
+      "binding": "PRIVATE_FILES",
+      "bucket_name": "app-private-files"
+    }
+  ],
+
+  "vars": {
+    // 生产护栏靠它生效：file: 数据库和示例 JWT 密钥都会启动即失败
+    "NODE_ENV": "production",
+
+    // 发件地址。域名必须在邮件服务商那边验证过 DNS（SPF/DKIM），
+    // 否则发信一律 403。**收信也要能收** —— 没有 MX 记录的域名收不到回复，
+    // 用户照着「直接回复这封邮件」回过来，信会直接消失。
+    "EMAIL_FROM": "noreply@example.com"
+  },
+
+  // Workers Logs，出问题时能看到函数日志
+  "observability": {
+    "enabled": true
+  }
+
+  // Smart Placement —— 默认不打开，因为它未必更快，要实测。
+  //
+  // Worker 默认在离用户最近的节点跑。数据库离得远的话，每次查询都要跨洋，
+  // 一个请求里查好几次就会被乘好几倍。开了之后 Worker 会自动挪到靠近数据库的位置。
+  //
+  // 打开之前先量一次 /api/health 的 dbLatencyMs 和整体响应时间，打开后再量一次对比。
+  // "placement": { "mode": "smart" }
+}

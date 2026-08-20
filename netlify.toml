@@ -1,0 +1,56 @@
+[build]
+  # base 目录刻意不设置：安装和构建都必须在仓库根执行，
+  # 否则 Netlify 找不到根目录的 pnpm-lock.yaml，会回退用 npm 安装然后失败。
+  # 构建全部包：前端产物之外，函数还需要 packages/* 编译出的 dist。
+  # ci = 五个守卫 + 测试 + 构建。
+  # **不要在这里直接调 turbo** —— 那样根 package.json 里的守卫脚本
+  # 只在本地跑过，线上部署完全绕开它们。守卫挂了就不该发上线，
+  # 全部加起来也不到十秒。
+  command = "pnpm run ci"
+  publish = "apps/web/dist"
+
+[build.environment]
+  # 构建期 Node 版本，需与 Functions 运行时一致
+  NODE_VERSION = "22.22.0"
+
+[functions]
+  directory = "netlify/functions"
+  # v2 的 TypeScript 函数由 nft（node-file-trace）打包，会把依赖按原样收进产物。
+  # 注意：它不会带上 libsql 的平台原生 .node 绑定，所以生产环境的数据库连接
+  # 必须走纯 HTTP 的 web 驱动 —— 见 packages/db/src/client.ts 里的协议分支。
+  node_bundler = "nft"
+
+# SPA fallback。刻意按 context 分别声明，而不是写成顶层的 [[redirects]]。
+#
+# 顶层规则对 `netlify dev` 同样生效，而 dev 阶段 Vite 是按需动态提供
+# /src/*.tsx、/@vite/client 这些模块的，它们在 publish 目录里并不作为静态
+# 文件存在，会被 /* 整个重写成 index.html —— 浏览器拿到 content-type 为
+# text/html 的模块脚本，直接白屏报错。
+#
+# 同理也不能放进 apps/web/public/_redirects：那样会被构建复制进
+# apps/web/dist/，而 netlify dev 会从 publish 目录读取它，本地构建过之后
+# dev 就又坏了（实测确认，且表现取决于有没有跑过 build，极难排查）。
+#
+# 按 context 声明后，dev 上下文匹配不到任何规则，深链兜底交给 Vite 自己的
+# SPA fallback；三个部署上下文则各自拿到规则。
+# 新增部署上下文（如 branch-deploy 之外的具名分支）时记得同步加一段。
+
+[[context.production.redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[context.deploy-preview.redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[context.branch-deploy.redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "pnpm --filter web dev"
+  targetPort = 5173
+  autoLaunch = false

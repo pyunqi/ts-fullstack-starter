@@ -1,0 +1,24 @@
+node_modules/
+dist/
+.turbo/
+.netlify/
+
+# netlify dev 启动时为 Edge Functions 生成的，本项目不用 Edge Functions
+deno.lock
+
+# 本地 SQLite 数据库文件
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# 环境变量（.env.example 是要提交的）
+.env
+.env.local
+.env.*.local
+
+.DS_Store
+*.log
+
+# Claude Code 的本机个人配置（授权记录之类），不是项目配置
+.claude/settings.local.json

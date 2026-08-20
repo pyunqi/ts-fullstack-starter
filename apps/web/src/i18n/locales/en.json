@@ -1,0 +1,214 @@
+{
+  "brand": "Starter",
+
+  "nav": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "logout": "Sign out",
+    "me": "Account",
+    "language": "中文",
+    "accounts": "Accounts",
+    "settings": "Site settings",
+    "archive": "Archive",
+    "audit": "Audit log",
+    "password": "Password"
+  },
+
+  "common": {
+    "loading": "Loading…",
+    "submitting": "Submitting…",
+    "save": "Save",
+    "saved": "Saved",
+    "delete": "Delete",
+    "loadMore": "Load more",
+    "expandAll": "Expand",
+    "collapse": "Collapse",
+    "moveEarlier": "Move up",
+    "moveLater": "Move down",
+    "prevPage": "Previous",
+    "nextPage": "Next",
+    "pageRange": "{{from}}–{{to}} of {{total}}"
+  },
+
+  "theme": {
+    "label": "Theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+
+  "home": {
+    "title": "An empty starting point",
+    "text": "Auth, two identity systems, archiving, audit logs, rate limiting, bilingual UI and dark mode are already in place. Replace this text and start adding your own.",
+    "nextTitle": "What to do next",
+    "next1": "Add your tables in packages/db/src/schema.ts — if a table gets archived_at, wire it into the archive",
+    "next2": "Define enums and validation in packages/shared/src/schemas.ts, shared by both sides",
+    "next3": "Run pnpm check — seven seconds to find out what you forgot to wire up",
+    "adminEntry": "Go to admin →"
+  },
+
+  "login": {
+    "title": "Sign in",
+    "identifier": "Email or username",
+    "password": "Password",
+    "submit": "Sign in",
+    "noAccount": "No account yet?"
+  },
+
+  "register": {
+    "title": "Create an account",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "name": "Name",
+    "phoneOptional": "Phone (optional)",
+    "submit": "Sign up",
+    "hasAccount": "Already have an account?"
+  },
+
+  "me": {
+    "title": "Account",
+    "profile": "Profile",
+    "password": "Change password",
+    "passwordHint": "Changing your password signs out every other device immediately.",
+    "passwordDone": "Password changed. Other devices have been signed out.",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "changePassword": "Change password"
+  },
+
+  "adminLogin": {
+    "title": "Admin sign in",
+    "username": "Username"
+  },
+
+  "accounts": {
+    "displayName": "Display name",
+    "role": "Role",
+    "create": "Create account",
+    "active": "Active",
+    "disabled": "Disabled",
+    "enable": "Enable",
+    "disable": "Disable",
+    "createdAt": "Created {{date}}",
+    "lastLogin": "Last seen {{date}}",
+    "neverLoggedIn": "Never signed in",
+    "confirmArchive": "Move “{{name}}” to the archive? They lose access immediately, but you can restore them any time.",
+    "archiveHint": "Disabling and deleting are different: a disabled account stays on this list, a deleted one moves to the archive."
+  },
+
+  "admin": {
+    "role": {
+      "admin": "Administrator",
+      "staff": "Staff"
+    },
+    "auditGroup": {
+      "all": "All",
+      "auth": "Sign-in",
+      "account": "Accounts",
+      "user": "Users",
+      "image": "Images",
+      "settings": "Settings",
+      "archive": "Archive"
+    }
+  },
+
+  "archive": {
+    "intro": "Deleting anywhere in the admin only moves it here — the data is still in the database. Permanent deletion happens on this page only, and cannot be undone.",
+    "empty": "The archive is empty.",
+    "archivedAt": "Deleted {{date}}",
+    "restore": "Restore",
+    "purge": "Delete permanently",
+    "confirmPurge": "Permanently delete “{{name}}”? This cannot be undone.",
+    "type": {
+      "account": "Admin account",
+      "user": "User"
+    }
+  },
+
+  "settings": {
+    "siteName": "Site name",
+    "siteNameEn": "Site name (English)",
+    "heroTitle": "Home title",
+    "heroTitleEn": "Home title (English)",
+    "heroText": "Home subtitle",
+    "heroTextEn": "Home subtitle (English)",
+    "emailFromName": "Sender display name",
+    "emailReplyTo": "Reply-to address",
+    "enHint": "Leave an English field empty and the site falls back to the Chinese one — no need to fill in both every time.",
+    "testEmail": "Send a test email",
+    "testEmailHint": "Once the domain and API key are configured, send one to yourself first. Not receiving it usually means the domain's DNS hasn't verified — and in that case real users won't receive anything either.",
+    "sendTest": "Send",
+    "testSent": "Sent. Go check your inbox."
+  },
+
+  "image": {
+    "choose": "Choose image",
+    "uploading": "Uploading…",
+    "count": "{{count}} selected",
+    "addUrl": "Add image URL",
+    "unsupported": "Only JPEG, PNG and WebP are supported"
+  },
+
+  "error": {
+    "network": "Can't reach the server. Check your connection and try again.",
+    "notFound": "This page doesn't exist.",
+    "unexpected": "Something unexpected went wrong.",
+    "unexpectedWith": "Something unexpected went wrong: {{detail}}",
+    "unknownCode": "That didn't go through ({{code}}, HTTP {{status}}). Send us a screenshot of this line and we can trace it.",
+    "invalidFields": "Please fix: {{fields}}",
+    "listSeparator": ", ",
+
+    "field": {
+      "required": "Required",
+      "email": "Not a valid email address",
+      "datetime": "Not a valid date and time",
+      "format": "Wrong format",
+      "oneOf": "Not one of the allowed values",
+      "unexpected": "Contains unknown fields",
+      "tooShort": "At least {{min}} characters",
+      "tooLong": "At most {{max}} characters",
+      "tooSmall": "Must be at least {{min}}",
+      "tooBig": "Must be at most {{max}}"
+    },
+
+    "fieldName": {
+      "email": "email",
+      "username": "username",
+      "password": "password",
+      "name": "name",
+      "phone": "phone",
+      "displayName": "display name",
+      "role": "role",
+      "identifier": "email or username",
+      "currentPassword": "current password",
+      "newPassword": "new password",
+      "to": "recipient"
+    },
+
+    "code": {
+      "invalid_input": "Some of the details are wrong. Please check and try again.",
+      "invalid_query": "Those filter options aren't valid.",
+      "unauthorized": "Please sign in first.",
+      "forbidden": "This account doesn't have permission to do that.",
+      "not_found": "Not found — it may have been deleted already.",
+      "internal_error": "Server error. Send us a screenshot of this page; it will be in the logs.",
+      "invalid_credentials": "Wrong username or password.",
+      "invalid_password": "That current password isn't right.",
+      "account_disabled": "This account has been disabled. Please contact an administrator.",
+      "too_many_attempts": "Too many attempts. Please wait a while and try again.",
+      "too_many_requests": "Too many requests. Please try again in {{minutes}} minutes.",
+      "email_taken": "That email is already registered.",
+      "username_taken": "That username is taken.",
+      "username_taken_archived": "That username belongs to a deleted account. Restore it from the archive, or pick another name.",
+      "cannot_disable_self": "You can't disable or delete your own account — that would lock you out.",
+      "cannot_demote_self": "You can't demote yourself — that would lock you out.",
+      "account_has_uploads": "This account uploaded {{count}} image(s); deleting it would break the record of where they came from.",
+      "unsupported_image_type": "Only JPEG, PNG and WebP are supported.",
+      "image_too_large": "That image is too large. Please compress it first.",
+      "empty_body": "No content received.",
+      "email_not_configured": "Email isn't configured yet (RESEND_API_KEY and EMAIL_FROM), so nothing can be sent.",
+      "email_send_failed": "The email didn't go out. The sending domain most likely hasn't been verified."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["node"]
+  },
+  // drizzle.config.ts 由 drizzle-kit 自己的加载器执行，不参与本包的编译产物
+  "include": ["src/**/*.ts"]
+}

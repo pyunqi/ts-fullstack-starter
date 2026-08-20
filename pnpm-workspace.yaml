@@ -1,0 +1,58 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# esbuild 的安装脚本用于放置平台原生二进制，Vite 构建和 Netlify 函数打包都依赖它
+allowBuilds:
+  esbuild: true
+
+# 跨包共享依赖的版本在此统一声明，各包用 "catalog:" 引用，避免版本漂移。
+# 升级依赖时只改这里一处。
+catalog:
+  # 前端
+  react: ^19.2.8
+  react-dom: ^19.2.8
+  react-router: ^8.3.0
+  "@tanstack/react-query": ^5.101.4
+  react-i18next: ^17.0.11
+  i18next: ^26.3.6
+  react-hook-form: ^7.84.0
+  "@hookform/resolvers": ^5.7.1
+
+  # 构建
+  vite: ^8.2.0
+  "@vitejs/plugin-react": ^6.0.5
+  tailwindcss: ^4.3.3
+  "@tailwindcss/vite": ^4.3.3
+
+  # 后端
+  hono: ^4.13.0
+  "@netlify/functions": ^5.3.0
+  jose: ^6.2.8
+  bcryptjs: ^3.0.3
+
+  # 数据库
+  "@libsql/client": ^0.17.4
+  drizzle-orm: ^0.45.2
+  drizzle-kit: ^0.31.10
+
+  # @netlify/blobs 会传递依赖 @opentelemetry/api，而它是 drizzle-orm 的可选 peer。
+  # 如果只有 packages/api 能看到它，pnpm 会为 api 和 db 各生成一份 peer 解析不同的
+  # drizzle-orm 实例，两份的类型带私有字段互不兼容，typecheck 直接失败
+  # （"Types have separate declarations of a private property 'shouldInlineParams'"）。
+  # 所以在 db 里也显式声明一次，强制两个包解析到同一份 drizzle。
+  "@opentelemetry/api": ^1.9.1
+
+  # 测试
+  vitest: ^3.2.4
+
+  # 共享
+  zod: ^4.4.3
+  typescript: ^6.0.3
+  "@types/react": ^19.2.18
+  "@types/react-dom": ^19.2.4
+  "@types/node": ^22.19.0
+
+minimumReleaseAgeExclude:
+  - hono@4.13.0
+  - jose@6.2.8

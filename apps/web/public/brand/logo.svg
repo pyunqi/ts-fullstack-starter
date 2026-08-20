@@ -1,0 +1,6 @@
+<!-- 占位标志，见 favicon.svg 的说明。 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 32">
+  <rect width="32" height="32" rx="7" fill="#12312b"/>
+  <path d="M9 22V10h5.4a4 4 0 0 1 0 8H12" stroke="#e8a33d" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <text x="42" y="22" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#12312b">Starter</text>
+</svg>

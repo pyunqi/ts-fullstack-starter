@@ -1,0 +1,6 @@
+<!-- 图片位的占位图：没有配图时显示它，而不是留一个塌陷的空框。 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120">
+  <rect width="160" height="120" fill="#d8e0da"/>
+  <path d="M40 78l24-26 18 20 12-12 26 18z" fill="#6e7b72" opacity=".5"/>
+  <circle cx="56" cy="44" r="8" fill="#6e7b72" opacity=".5"/>
+</svg>
